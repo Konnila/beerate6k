@@ -9,3 +9,41 @@ Total of <%= @ratings.count %> ratings given
 </ul>
 
 <%= link_to 'New Rating', new_rating_path if current_user %>
+
+<h2>Recent ratings</h2>
+<table class="table">
+  <thead>
+    <tr>
+        <th>Beer</th>
+        <th>Score</th>
+        <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @ratings.recent.each do |rat| %>
+      <tr>
+        <td> <%= rat.beer.name  %></td>
+        <td> <%= rat.score %> </td>
+        <td> <%= rat.created_at %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h2>Top Styles</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Style</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @ratings.recent.each do |rat| %>
+      <tr>
+        <td> <%= rat.beer.name  %></td>
+        <td> <%= rat.score %> </td>
+        <td> <%= rat.created_at %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
